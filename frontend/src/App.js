@@ -53,49 +53,60 @@ const LandingPage = ({ onStartMatching }) => {
       </div>
 
       {/* How it Works Section */}
-      <div className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="py-16 bg-gradient-to-r from-gray-900 to-black relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-pink-900/20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
-            <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">How It Works</h2>
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              Simple. Smart. Fast.
+            <h2 className="text-base text-yellow-400 font-bold tracking-wide uppercase text-lg">⚡ How It Works</h2>
+            <p className="mt-4 text-4xl leading-10 font-extrabold tracking-tight text-white sm:text-5xl drop-shadow-lg">
+              Simple. <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Smart.</span> 
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-400"> Fast.</span>
             </p>
           </div>
 
-          <div className="mt-10">
-            <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
-              <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mx-auto">
-                  <span className="text-xl font-bold">1</span>
+          <div className="mt-16">
+            <div className="space-y-12 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-12">
+              <div className="text-center group hover:scale-105 transform transition-all duration-300">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-sm opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative flex items-center justify-center h-20 w-20 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white mx-auto shadow-xl">
+                    <span className="text-2xl font-bold">1</span>
+                  </div>
                 </div>
-                <div className="mt-5">
-                  <h3 className="text-lg leading-6 font-medium text-gray-900">Submit Your Brief</h3>
-                  <p className="mt-2 text-base text-gray-500">
-                    Tell us about your project - category, location, budget, and style preferences.
+                <div className="mt-6">
+                  <h3 className="text-xl leading-8 font-bold text-white mb-3">📝 Submit Your Brief</h3>
+                  <p className="text-lg text-gray-300 leading-relaxed">
+                    Tell us about your creative project - category, location, budget, duration, and style preferences.
                   </p>
                 </div>
               </div>
 
-              <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mx-auto">
-                  <span className="text-xl font-bold">2</span>
+              <div className="text-center group hover:scale-105 transform transition-all duration-300">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur-sm opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative flex items-center justify-center h-20 w-20 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white mx-auto shadow-xl">
+                    <span className="text-2xl font-bold">2</span>
+                  </div>
                 </div>
-                <div className="mt-5">
-                  <h3 className="text-lg leading-6 font-medium text-gray-900">AI Matching</h3>
-                  <p className="mt-2 text-base text-gray-500">
-                    Our engine analyzes skills, experience, location, and style to find perfect matches.
+                <div className="mt-6">
+                  <h3 className="text-xl leading-8 font-bold text-white mb-3">🤖 AI-Powered Matching</h3>
+                  <p className="text-lg text-gray-300 leading-relaxed">
+                    Our intelligent engine analyzes skills, experience, location, budget compatibility and style to find perfect matches.
                   </p>
                 </div>
               </div>
 
-              <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mx-auto">
-                  <span className="text-xl font-bold">3</span>
+              <div className="text-center group hover:scale-105 transform transition-all duration-300">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-yellow-500 rounded-full blur-sm opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative flex items-center justify-center h-20 w-20 rounded-full bg-gradient-to-r from-pink-500 to-yellow-500 text-white mx-auto shadow-xl">
+                    <span className="text-2xl font-bold">3</span>
+                  </div>
                 </div>
-                <div className="mt-5">
-                  <h3 className="text-lg leading-6 font-medium text-gray-900">Get Top 3 Matches</h3>
-                  <p className="mt-2 text-base text-gray-500">
-                    Receive ranked recommendations with detailed explanations and portfolio links.
+                <div className="mt-6">
+                  <h3 className="text-xl leading-8 font-bold text-white mb-3">🏆 Get Top 3 Matches</h3>
+                  <p className="text-lg text-gray-300 leading-relaxed">
+                    Receive ranked recommendations with detailed match explanations, portfolios, and contact information.
                   </p>
                 </div>
               </div>
