@@ -8,27 +8,31 @@ const API = `${BACKEND_URL}/api`;
 // Landing Page Component
 const LandingPage = ({ onStartMatching }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800">
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="relative z-10 pb-8 bg-gradient-to-br from-blue-50 to-indigo-100 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+          <div className="relative z-10 pb-8 bg-gradient-to-br from-indigo-900/95 via-purple-900/95 to-pink-800/95 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
             <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
               <div className="sm:text-center lg:text-left">
-                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl drop-shadow-lg">
                   <span className="block xl:inline">Match the Right</span>{' '}
-                  <span className="block text-blue-600 xl:inline">Creative to the Right Gig</span>
+                  <span className="block bg-gradient-to-r from-yellow-400 via-pink-300 to-blue-300 bg-clip-text text-transparent xl:inline animate-pulse">
+                    Creative to the Right Gig
+                  </span>
                 </h1>
-                <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                  Connect with talented photographers, designers, and filmmakers who match your project needs, budget, and style preferences. Get ranked recommendations in seconds.
+                <p className="mt-6 text-lg text-gray-100 sm:mt-8 sm:text-xl sm:max-w-xl sm:mx-auto md:mt-8 md:text-2xl lg:mx-0 leading-relaxed drop-shadow-md">
+                  🎯 Connect with talented photographers, designers, and filmmakers who perfectly match your project needs, budget, and style preferences. 
+                  <span className="block mt-2 text-yellow-300 font-semibold">Get AI-powered ranked recommendations in seconds!</span>
                 </p>
-                <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                  <div className="rounded-md shadow">
+                <div className="mt-8 sm:mt-12 sm:flex sm:justify-center lg:justify-start">
+                  <div className="group relative">
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                     <button
                       onClick={onStartMatching}
-                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition duration-300"
+                      className="relative w-full flex items-center justify-center px-10 py-4 border border-transparent text-lg font-bold rounded-xl text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-xl"
                     >
-                      Start Matching
+                      🚀 Start Matching Now
                     </button>
                   </div>
                 </div>
@@ -37,11 +41,14 @@ const LandingPage = ({ onStartMatching }) => {
           </div>
         </div>
         <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          <img
-            className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-            src="https://images.unsplash.com/photo-1590650624342-f527904ca1b3"
-            alt="Creative professionals collaborating"
-          />
+          <div className="relative h-56 w-full sm:h-72 md:h-96 lg:h-full">
+            <img
+              className="h-full w-full object-cover rounded-l-3xl shadow-2xl"
+              src="https://images.unsplash.com/photo-1590650624342-f527904ca1b3"
+              alt="Creative professionals collaborating"
+            />
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-purple-600/20 to-purple-900/40 rounded-l-3xl"></div>
+          </div>
         </div>
       </div>
 
