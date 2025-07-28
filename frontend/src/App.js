@@ -322,92 +322,157 @@ const BriefForm = ({ onSubmit, onBack, loading }) => {
 const ResultsPage = ({ matches, onBackToForm, loading }) => {
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-lg text-gray-600">Finding your perfect matches...</p>
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full blur-xl opacity-75 animate-pulse"></div>
+            <div className="relative animate-spin rounded-full h-32 w-32 border-4 border-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto">
+              <div className="absolute inset-2 bg-gradient-to-br from-indigo-900 to-purple-900 rounded-full"></div>
+            </div>
+          </div>
+          <p className="mt-8 text-2xl font-bold text-white animate-bounce">🔍 Finding your perfect creative matches...</p>
+          <p className="mt-4 text-lg text-gray-300">Analyzing skills, experience, and style preferences</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white shadow rounded-lg overflow-hidden">
-          <div className="px-4 py-5 sm:p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">
-                Top 3 Talent Matches
-              </h3>
-              <button
-                onClick={onBackToForm}
-                className="text-sm text-blue-600 hover:text-blue-800"
-              >
-                ← New Search
-              </button>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="relative group mb-8">
+          <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl blur opacity-75"></div>
+          <div className="relative bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl overflow-hidden">
+            <div className="bg-gradient-to-r from-green-500 to-blue-600 px-8 py-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-3xl font-extrabold text-white flex items-center">
+                    🏆 Top 3 Perfect Matches Found!
+                  </h3>
+                  <p className="text-lg text-green-100 mt-2">Here are your ideal creative professionals</p>
+                </div>
+                <button
+                  onClick={onBackToForm}
+                  className="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-xl font-bold transition-all duration-200 hover:scale-105"
+                >
+                  🔍 New Search
+                </button>
+              </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="p-8 space-y-8">
               {matches.map((match, index) => (
-                <div key={match.talent.id} className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0">
-                        <div className="h-10 w-10 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
-                          <span className="text-white font-bold text-lg">#{index + 1}</span>
+                <div key={match.talent.id} className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl blur opacity-0 group-hover:opacity-75 transition duration-300"></div>
+                  <div className="relative bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 rounded-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]">
+                    
+                    {/* Rank Badge & Header */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex items-center">
+                        <div className="relative">
+                          <div className={`absolute inset-0 rounded-full blur-md ${
+                            index === 0 ? 'bg-yellow-400' : index === 1 ? 'bg-gray-400' : 'bg-orange-400'
+                          } opacity-75`}></div>
+                          <div className={`relative flex items-center justify-center w-16 h-16 rounded-full text-white font-extrabold text-xl shadow-lg ${
+                            index === 0 ? 'bg-gradient-to-r from-yellow-400 to-yellow-600' :
+                            index === 1 ? 'bg-gradient-to-r from-gray-400 to-gray-600' :
+                            'bg-gradient-to-r from-orange-400 to-orange-600'
+                          }`}>
+                            {index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}
+                          </div>
+                        </div>
+                        <div className="ml-6">
+                          <h4 className="text-3xl font-bold text-gray-900 mb-2">{match.talent.name}</h4>
+                          <p className="text-lg text-gray-600 font-medium">{match.talent.bio}</p>
                         </div>
                       </div>
-                      <div className="ml-4">
-                        <h4 className="text-xl font-medium text-gray-900">{match.talent.name}</h4>
-                        <p className="text-sm text-gray-500">{match.talent.bio}</p>
+                      
+                      {/* Match Score */}
+                      <div className="text-right">
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl blur opacity-75"></div>
+                          <div className="relative bg-gradient-to-r from-green-500 to-blue-600 text-white px-6 py-4 rounded-2xl shadow-lg">
+                            <div className="text-4xl font-extrabold">{match.score.toFixed(0)}</div>
+                            <div className="text-sm font-bold opacity-90">Match Score</div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-2xl font-bold text-blue-600">{match.score.toFixed(0)}</div>
-                      <div className="text-sm text-gray-500">Match Score</div>
-                    </div>
-                  </div>
 
-                  <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <h5 className="text-sm font-medium text-gray-900 mb-2">Details</h5>
-                      <div className="text-sm text-gray-600 space-y-1">
-                        <div>📍 {match.talent.location}</div>
-                        <div>💰 ₹{match.talent.budget_min.toLocaleString()} - ₹{match.talent.budget_max.toLocaleString()}</div>
-                        <div>🎯 {match.talent.category}</div>
-                        <div>⭐ {match.talent.rating}/5.0 • {match.talent.experience_years} years exp</div>
+                    {/* Details Grid */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+                      <div className="space-y-4">
+                        <h5 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                          📊 Professional Details
+                        </h5>
+                        <div className="space-y-3">
+                          <div className="flex items-center bg-blue-50 rounded-lg px-4 py-3">
+                            <span className="text-2xl mr-3">📍</span>
+                            <span className="font-bold text-blue-800">Location:</span>
+                            <span className="ml-2 text-blue-700 font-semibold">{match.talent.location}</span>
+                          </div>
+                          <div className="flex items-center bg-green-50 rounded-lg px-4 py-3">
+                            <span className="text-2xl mr-3">💰</span>
+                            <span className="font-bold text-green-800">Budget:</span>
+                            <span className="ml-2 text-green-700 font-semibold">
+                              ₹{match.talent.budget_min.toLocaleString()} - ₹{match.talent.budget_max.toLocaleString()}
+                            </span>
+                          </div>
+                          <div className="flex items-center bg-purple-50 rounded-lg px-4 py-3">
+                            <span className="text-2xl mr-3">🎯</span>
+                            <span className="font-bold text-purple-800">Specialty:</span>
+                            <span className="ml-2 text-purple-700 font-semibold capitalize">{match.talent.category} Photography</span>
+                          </div>
+                          <div className="flex items-center bg-yellow-50 rounded-lg px-4 py-3">
+                            <span className="text-2xl mr-3">⭐</span>
+                            <span className="font-bold text-yellow-800">Rating:</span>
+                            <span className="ml-2 text-yellow-700 font-semibold">{match.talent.rating}/5.0 • {match.talent.experience_years} years exp</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h5 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                          🎨 Style Expertise
+                        </h5>
+                        <div className="flex flex-wrap gap-3">
+                          {match.talent.style_tags.map(tag => (
+                            <span key={tag} className="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg transform hover:scale-105 transition-transform duration-200">
+                              #{tag}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                    <div>
-                      <h5 className="text-sm font-medium text-gray-900 mb-2">Style Tags</h5>
-                      <div className="flex flex-wrap gap-1">
-                        {match.talent.style_tags.map(tag => (
-                          <span key={tag} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                            {tag}
-                          </span>
-                        ))}
+
+                    {/* Match Explanation */}
+                    <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 mb-6">
+                      <h5 className="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                        🤔 Why This Perfect Match?
+                      </h5>
+                      <p className="text-lg text-gray-700 leading-relaxed font-medium">{match.explanation}</p>
+                    </div>
+
+                    {/* Portfolio Link */}
+                    {match.talent.portfolio_url && (
+                      <div className="flex justify-center">
+                        <div className="relative group">
+                          <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                          <a
+                            href={match.talent.portfolio_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative inline-flex items-center px-8 py-4 border border-transparent text-lg font-bold rounded-xl text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-4 focus:ring-purple-500/50 transform hover:scale-105 transition-all duration-200 shadow-xl"
+                          >
+                            🎨 View Portfolio & Contact
+                            <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                            </svg>
+                          </a>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
-
-                  <div className="mt-4">
-                    <h5 className="text-sm font-medium text-gray-900 mb-2">Why This Match?</h5>
-                    <p className="text-sm text-gray-600">{match.explanation}</p>
-                  </div>
-
-                  {match.talent.portfolio_url && (
-                    <div className="mt-4 pt-4 border-t border-gray-200">
-                      <a
-                        href={match.talent.portfolio_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center px-4 py-2 border border-blue-300 shadow-sm text-sm font-medium rounded-md text-blue-700 bg-blue-50 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                      >
-                        View Portfolio →
-                      </a>
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
