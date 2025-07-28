@@ -146,132 +146,172 @@ const BriefForm = ({ onSubmit, onBack, loading }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="px-4 py-5 sm:p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg leading-6 font-medium text-gray-900">
-              Project Brief
-            </h3>
-            <button
-              onClick={onBack}
-              className="text-sm text-blue-600 hover:text-blue-800"
-            >
-              ← Back
-            </button>
-          </div>
-          
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Category */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Project Category *
-              </label>
-              <select
-                value={formData.category}
-                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                required
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              >
-                <option value="">Select category</option>
-                {categories.map(cat => (
-                  <option key={cat} value={cat}>{cat.charAt(0).toUpperCase() + cat.slice(1)}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Location */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Location *
-              </label>
-              <input
-                type="text"
-                value={formData.location}
-                onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                required
-                placeholder="e.g., Goa, Mumbai, Delhi"
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              />
-            </div>
-
-            {/* Budget */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Budget: ₹{formData.budget.toLocaleString()}
-              </label>
-              <input
-                type="range"
-                min="20000"
-                max="200000"
-                step="5000"
-                value={formData.budget}
-                onChange={(e) => setFormData({ ...formData, budget: parseInt(e.target.value) })}
-                className="mt-1 block w-full"
-              />
-              <div className="flex justify-between text-xs text-gray-500">
-                <span>₹20K</span>
-                <span>₹200K</span>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-2xl mx-auto">
+        <div className="relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000"></div>
+          <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-2xl font-bold text-white flex items-center">
+                  📋 Project Brief
+                </h3>
+                <button
+                  onClick={onBack}
+                  className="text-white hover:text-yellow-300 transition-colors duration-200 text-lg font-medium"
+                >
+                  ← Back
+                </button>
               </div>
             </div>
-
-            {/* Duration */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Duration (days)
-              </label>
-              <input
-                type="number"
-                min="1"
-                max="30"
-                value={formData.duration_days}
-                onChange={(e) => setFormData({ ...formData, duration_days: parseInt(e.target.value) })}
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              />
-            </div>
-
-            {/* Style Preferences */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Style Preferences
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                {styleOptions.map(style => (
-                  <label key={style} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      checked={formData.style_preferences.includes(style)}
-                      onChange={() => handleStyleToggle(style)}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                    />
-                    <span className="ml-2 text-sm text-gray-700 capitalize">{style}</span>
+            
+            <div className="px-8 py-8">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {/* Category */}
+                <div className="group">
+                  <label className="block text-lg font-bold text-gray-800 mb-3">
+                    🎯 Project Category *
                   </label>
-                ))}
-              </div>
-            </div>
+                  <select
+                    value={formData.category}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    required
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl shadow-sm focus:ring-4 focus:ring-purple-500/25 focus:border-purple-500 text-lg font-medium bg-white/90 transition-all duration-200"
+                  >
+                    <option value="">Select category</option>
+                    {categories.map(cat => (
+                      <option key={cat} value={cat}>
+                        {cat.charAt(0).toUpperCase() + cat.slice(1)} Photography
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-            {/* Description */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Additional Notes
-              </label>
-              <textarea
-                value={formData.description}
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                rows="3"
-                placeholder="Any specific requirements or details..."
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              />
-            </div>
+                {/* Location */}
+                <div className="group">
+                  <label className="block text-lg font-bold text-gray-800 mb-3">
+                    📍 Location *
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.location}
+                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                    required
+                    placeholder="e.g., Goa, Mumbai, Delhi, Bangalore"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl shadow-sm focus:ring-4 focus:ring-purple-500/25 focus:border-purple-500 text-lg font-medium bg-white/90 transition-all duration-200"
+                  />
+                </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
-            >
-              {loading ? 'Finding Matches...' : 'Find Matches'}
-            </button>
-          </form>
+                {/* Budget */}
+                <div className="group">
+                  <label className="block text-lg font-bold text-gray-800 mb-3">
+                    💰 Budget: <span className="text-green-600 font-extrabold">₹{formData.budget.toLocaleString()}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="20000"
+                    max="200000"
+                    step="5000"
+                    value={formData.budget}
+                    onChange={(e) => setFormData({ ...formData, budget: parseInt(e.target.value) })}
+                    className="w-full h-3 bg-gradient-to-r from-green-400 to-blue-500 rounded-lg appearance-none cursor-pointer slider"
+                  />
+                  <div className="flex justify-between text-sm font-semibold text-gray-600 mt-2">
+                    <span>₹20K</span>
+                    <span className="text-purple-600">Sweet Spot: ₹50K-₹100K</span>
+                    <span>₹200K</span>
+                  </div>
+                </div>
+
+                {/* Duration */}
+                <div className="group">
+                  <label className="block text-lg font-bold text-gray-800 mb-3">
+                    ⏱️ Duration (days)
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    max="30"
+                    value={formData.duration_days}
+                    onChange={(e) => setFormData({ ...formData, duration_days: parseInt(e.target.value) })}
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl shadow-sm focus:ring-4 focus:ring-purple-500/25 focus:border-purple-500 text-lg font-medium bg-white/90 transition-all duration-200"
+                  />
+                </div>
+
+                {/* Style Preferences */}
+                <div className="group">
+                  <label className="block text-lg font-bold text-gray-800 mb-4">
+                    🎨 Style Preferences
+                  </label>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    {styleOptions.map(style => (
+                      <label key={style} className="flex items-center group cursor-pointer">
+                        <div className="relative">
+                          <input
+                            type="checkbox"
+                            checked={formData.style_preferences.includes(style)}
+                            onChange={() => handleStyleToggle(style)}
+                            className="sr-only"
+                          />
+                          <div className={`w-5 h-5 rounded-md border-2 transition-all duration-200 ${
+                            formData.style_preferences.includes(style)
+                              ? 'bg-gradient-to-r from-purple-500 to-pink-500 border-purple-500'
+                              : 'border-gray-300 bg-white group-hover:border-purple-400'
+                          }`}>
+                            {formData.style_preferences.includes(style) && (
+                              <svg className="w-3 h-3 text-white absolute top-0.5 left-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                              </svg>
+                            )}
+                          </div>
+                        </div>
+                        <span className={`ml-3 text-base font-medium capitalize transition-colors duration-200 ${
+                          formData.style_preferences.includes(style) ? 'text-purple-700 font-bold' : 'text-gray-700'
+                        }`}>
+                          {style}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Description */}
+                <div className="group">
+                  <label className="block text-lg font-bold text-gray-800 mb-3">
+                    📝 Additional Notes
+                  </label>
+                  <textarea
+                    value={formData.description}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    rows="4"
+                    placeholder="Any specific requirements, creative vision, or special details about your project..."
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl shadow-sm focus:ring-4 focus:ring-purple-500/25 focus:border-purple-500 text-base font-medium bg-white/90 transition-all duration-200 resize-none"
+                  />
+                </div>
+
+                <div className="relative group">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="relative w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-xl text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-500/50 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] transition-all duration-200 shadow-xl"
+                  >
+                    {loading ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Finding Perfect Matches...
+                      </>
+                    ) : (
+                      '🎯 Find My Perfect Matches'
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
